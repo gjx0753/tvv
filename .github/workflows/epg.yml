@@ -80,12 +80,13 @@ jobs:
           # 统计报告
           echo -e "\n📊 下载统计: 成功 $SUCCESS_COUNT/$TOTAL_COUNT"
           
-          if [ -n "$FAILED_FILES" ]; then
-            echo -e "\n❌ 失败文件列表：\n$FAILED_FILES"
-            exit 1
+                    if [ -n "$FAILED_FILES" ]; then
+            echo -e "\n⚠️ 部分文件失败列表：\n$FAILED_FILES"
+            echo "⚠️ 将继续合并已成功下载的文件..."
           else
             echo -e "\n✅ 所有文件下载成功"
           fi
+
         env:
           DOWNLOAD_PROXY: ${{ secrets.DOWNLOAD_PROXY }}
 
